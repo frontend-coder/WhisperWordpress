@@ -135,87 +135,34 @@ $lawfirm_anim_number_descr = get_sub_field('lawfirm_anim_number_descr');
 				<h2 class="mb-4">Practice Areas</h2>
 			</div>
 		</div>
+
 		<div class="row d-flex justify-content-center">
+
+		<?php
+			$posts = get_posts( array (
+				'post_type' => 'practice',
+				'numberposts' => 10,
+				'order' => 'ASC',
+			));
+			if($posts):
+// lawasf_debug($posts);
+				?>
+		<?php foreach ($posts as $post ): ?>
 			<div class="col-md-3 col-lg-2 text-center">
 				<div class="practice-area ftco-animate">
 					<div class="icon d-flex justify-content-center align-items-center">
-						<span class="flaticon-family"></span>
+<?php if(get_field("practice_areas_icon")): ?>
+						<span class="<?= the_field('practice_areas_icon') ?>"></span>
+<?php endif; ?>
 					</div>
-					<h3><a href="#">Family Law</a></h3>
+					<h3><a href="<?php the_permalink(); ?>"><?= $post->post_title ?></a></h3>
 				</div>
 			</div>
-			<div class="col-md-3 col-lg-2 text-center">
-				<div class="practice-area ftco-animate">
-					<div class="icon d-flex justify-content-center align-items-center">
-						<span class="flaticon-auction"></span>
-					</div>
-					<h3><a href="#">Business Law</a></h3>
-				</div>
-			</div>
-			<div class="col-md-3 col-lg-2 text-center">
-				<div class="practice-area ftco-animate">
-					<div class="icon d-flex justify-content-center align-items-center">
-						<span class="flaticon-shield"></span>
-					</div>
-					<h3><a href="#">Insurance Law</a></h3>
-				</div>
-			</div>
-			<div class="col-md-3 col-lg-2 text-center">
-				<div class="practice-area ftco-animate">
-					<div class="icon d-flex justify-content-center align-items-center">
-						<span class="flaticon-handcuffs"></span>
-					</div>
-					<h3><a href="#">Criminal Law</a></h3>
-				</div>
-			</div>
-			<div class="col-md-3 col-lg-2 text-center">
-				<div class="practice-area ftco-animate">
-					<div class="icon d-flex justify-content-center align-items-center">
-						<span class="flaticon-house"></span>
-					</div>
-					<h3><a href="#">Property Law</a></h3>
-				</div>
-			</div>
-			<div class="col-md-3 col-lg-2 text-center">
-				<div class="practice-area ftco-animate">
-					<div class="icon d-flex justify-content-center align-items-center">
-						<span class="flaticon-employee"></span>
-					</div>
-					<h3><a href="#">Employment Law</a></h3>
-				</div>
-			</div>
-			<div class="col-md-3 col-lg-2 text-center">
-				<div class="practice-area ftco-animate">
-					<div class="icon d-flex justify-content-center align-items-center">
-						<span class="flaticon-fire"></span>
-					</div>
-					<h3><a href="#">Fire Accident</a></h3>
-				</div>
-			</div>
-			<div class="col-md-3 col-lg-2 text-center">
-				<div class="practice-area ftco-animate">
-					<div class="icon d-flex justify-content-center align-items-center">
-						<span class="flaticon-money"></span>
-					</div>
-					<h3><a href="#">Financial Law</a></h3>
-				</div>
-			</div>
-			<div class="col-md-3 col-lg-2 text-center">
-				<div class="practice-area ftco-animate">
-					<div class="icon d-flex justify-content-center align-items-center">
-						<span class="flaticon-medicine"></span>
-					</div>
-					<h3><a href="#">Drug Offenses</a></h3>
-				</div>
-			</div>
-			<div class="col-md-3 col-lg-2 text-center">
-				<div class="practice-area ftco-animate">
-					<div class="icon d-flex justify-content-center align-items-center">
-						<span class="flaticon-handcuffs"></span>
-					</div>
-					<h3><a href="#">Sexual Offenses</a></h3>
-				</div>
-			</div>
+<?php endforeach; //practice-areas  ?>
+<?php endif; //practice-areas
+		wp_reset_postdata();  ?>
+
+
 		</div>
 	</div>
 </section>

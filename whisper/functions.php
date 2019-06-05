@@ -121,7 +121,7 @@ add_action( 'widgets_init', 'whisper_widgets_init' );
 require  get_template_directory() . '/functions/including-style.php';
 require  get_template_directory() . '/functions/custom-thamb.php' ;
 require  get_template_directory() . '/functions/asf-options.php' ;
-
+require  get_template_directory() . '/functions/custom-type.php' ;
 
 /**
  * Implement the Custom Header feature.
