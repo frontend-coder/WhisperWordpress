@@ -27,17 +27,15 @@ get_header();
 
 <?php endwhile; // end while ?>
 <?php endif; // end if       ?>
-
-<?php if( get_field('practice_areas_ancoring') && get_field('practice_areas_link') ) :?>
-            <p><a href="<?php the_field('practice_areas_link');?>" class="btn btn-primary"><?php the_field('practice_areas_ancoring');?></a></p>
+<?php if( get_field('attorneys_e_areas_ancoring') && get_field('attorneys_areas_link') ) :?>
+    <p><a href="<?php the_field('attorneys_areas_link');?>" class="btn btn-primary"><?php the_field('attorneys_e_areas_ancoring');?></a></p>
 <?php endif; ?>
-
             <div class="row mt-5 pt-5">
 		          <div class="col-md-12">
 		            <h2 class="mb-4 font-weight-bold">Our Legal Advisors</h2>
 		          </div>
 
-    <?php
+ <?php
     $posts = get_posts( array (
       'post_type' => 'attorneys',
       'orderby' => 'rand',
@@ -48,8 +46,6 @@ get_header();
       ?>
 
 <?php foreach ($posts as $post ): ?>
-
-
 
             	<div class="col-lg-6">
 		        		<div class="block-2 ftco-animate">
@@ -73,23 +69,23 @@ echo $trimmed_content;
 			                </blockquote>
 			                <div class="author d-flex">
 			                  <div class="image mr-3 align-self-center">
-			                 <!--    <img src="images/person_1.jpg" alt=""> -->
-<?php if (has_post_thumbnail($post-> ID)) : ?>
+			                   <!--  <img src="images/person_1.jpg" alt=""> -->
+			                <?php if (has_post_thumbnail($post-> ID)) : ?>
                 <?= get_the_post_thumbnail($post-> ID, 'attorneysmainlitle-thamb', array('alt' => 'img-responsive') ); ?>
   <?php endif; //проверка миниатюры ?>
-
-			                  </div>
+                        </div>
 			                  <div class="name align-self-center"><a href="<?php the_permalink(); ?>"><?= $post->post_title ?></a>
 <?php if(get_field("attorneys_position")): ?>
-                         <span class="position"><?= the_field('attorneys_position') ?></span>
+                          <span class="position"><?= the_field('attorneys_position') ?></span>
 <?php endif; ?>
 
-                       </div>
+                        </div>
 			                </div>
 			              </div>
 			            </div>
 			          </div>
 		        	</div>
+
 
 <?php endforeach; //attorneys  ?>
 <?php endif; //attorneys

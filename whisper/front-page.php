@@ -131,8 +131,13 @@ $lawfirm_anim_number_descr = get_sub_field('lawfirm_anim_number_descr');
 	<div class="container">
 		<div class="row justify-content-center mb-5 pb-3">
 			<div class="col-md-7 text-center heading-section ftco-animate">
-				<span class="subheading">Practice Areas</span>
-				<h2 class="mb-4">Practice Areas</h2>
+<?php if(get_field('practice_areas_descr')) :?>
+				<span class="subheading"><?php the_field('practice_areas_descr');?></span>
+<?php endif; ?>
+<?php if(get_field('practice_areas_titlle')) :?>
+				<h2 class="mb-4"><?php the_field('practice_areas_titlle');?></h2>
+<?php endif; ?>
+
 			</div>
 		</div>
 
@@ -171,108 +176,78 @@ $lawfirm_anim_number_descr = get_sub_field('lawfirm_anim_number_descr');
 	<div class="container-fluid">
 		<div class="row justify-content-center mb-5 pb-3">
 			<div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-				<span class="subheading">Our Attorney</span>
-				<h2 class="mb-4">Our Legal Attorneys</h2>
+<?php if(get_field('attorneys_areas_descr')) :?>
+				<span class="subheading"><?php the_field('attorneys_areas_descr');?></span>
+<?php endif; ?>
+<?php if(get_field('attorneys_areas_titlle')) :?>
+				<h2 class="mb-4"><?php the_field('attorneys_areas_titlle');?></h2>
+<?php endif; ?>
 			</div>
 		</div>
+			<?php
+		$posts = get_posts( array (
+			'post_type' => 'attorneys',
+			'numberposts' => 4
+		));
+		if($posts):
+// lawasf_debug($posts);
+			?>
 		<div class="row">
+<?php foreach ($posts as $post ): ?>
+
+
 			<div class="col-lg-3 col-sm-6">
 				<div class="block-2 ftco-animate">
 					<div class="flipper">
-						<div class="front" style="background-image: url(/images/person_1.jpg);">
+						<div class="front" style="background-image: url(<?php $thumb_id = get_post_thumbnail_id();
+										$thumb_url = wp_get_attachment_image_src($thumb_id,'attorneysmainbig-thamb', false);
+										echo $thumb_url[0];   ?>);">
 							<div class="box">
-								<h2>Richard Anderson</h2>
-								<p>Civil Lawyer</p>
+								<h2><?= $post->post_title ?></h2>
+<?php if(get_field("attorneys_position")): ?>
+								<p><?= the_field('attorneys_position') ?></p>
+<?php endif; ?>
 							</div>
 						</div>
 						<div class="back">
 							<!-- back content -->
 							<blockquote>
-								<p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.&rdquo;</p>
+								<p>&ldquo;<?php
+$content = get_the_excerpt();// или get_the_content()
+$trimmed_content = wp_trim_words( $content, 30, '' );
+echo $trimmed_content;
+?>.&rdquo;</p>
 							</blockquote>
 							<div class="author d-flex">
 								<div class="image mr-3 align-self-center">
-									<img src="images/person_1.jpg" alt="">
+
+									<!-- <img src="images/person_1.jpg" alt=""> -->
+<?php if (has_post_thumbnail($post-> ID)) : ?>
+								<?= get_the_post_thumbnail($post-> ID, 'attorneysmainlitle-thamb', array('alt' => 'img-responsive') ); ?>
+	<?php endif; //проверка миниатюры ?>
 								</div>
-								<div class="name align-self-center">Richard Anderson <span class="position">Civil Lawyer</span></div>
+<div class="name align-self-center"><a href="<?php the_permalink(); ?>"><?= $post->post_title ?></a>
+<?php if(get_field("attorneys_position")): ?>
+ <span class="position"><?= the_field('attorneys_position') ?></span>
+<?php endif; ?>
+
+</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-3 col-sm-6">
-				<div class="block-2 ftco-animate">
-					<div class="flipper">
-						<div class="front" style="background-image: url(/images/person_2.jpg);">
-							<div class="box">
-								<h2>Jefford Maxillin</h2>
-								<p>Business Lawyer</p>
-							</div>
-						</div>
-						<div class="back">
-							<!-- back content -->
-							<blockquote>
-								<p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.&rdquo;</p>
-							</blockquote>
-							<div class="author d-flex">
-								<div class="image mr-3 align-self-center">
-									<img src="images/person_2.jpg" alt="">
-								</div>
-								<div class="name align-self-center">Jefford Maxillin<span class="position">Business Lawyer</span></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-sm-6">
-				<div class="block-2 ftco-animate">
-					<div class="flipper">
-						<div class="front" style="background-image: url(/images/person_3.jpg);">
-							<div class="box">
-								<h2>Carlos Obing</h2>
-								<p>Criminal Defense</p>
-							</div>
-						</div>
-						<div class="back">
-							<!-- back content -->
-							<blockquote>
-								<p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.&rdquo;</p>
-							</blockquote>
-							<div class="author d-flex">
-								<div class="image mr-3 align-self-center">
-									<img src="images/person_3.jpg" alt="">
-								</div>
-								<div class="name align-self-center">Carlos Obing <span class="position">Criminal Defense</span></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-sm-6">
-				<div class="block-2 ftco-animate">
-					<div class="flipper">
-						<div class="front" style="background-image: url(/images/person_4.jpg);">
-							<div class="box">
-								<h2>Nathan Smith</h2>
-								<p>Insurance Lawyer</p>
-							</div>
-						</div>
-						<div class="back">
-							<!-- back content -->
-							<blockquote>
-								<p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.&rdquo;</p>
-							</blockquote>
-							<div class="author d-flex">
-								<div class="image mr-3 align-self-center">
-									<img src="images/person_4.jpg" alt="">
-								</div>
-								<div class="name align-self-center">Nathan Smith <span class="position">Insurance Lawyer</span></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+<?php endforeach; //attorneys  ?>
+
+
+
+
 		</div>
+<?php endif; //attorneys
+wp_reset_postdata();  ?>
+
+
+
 	</div>
 </section>
 
@@ -280,32 +255,33 @@ $lawfirm_anim_number_descr = get_sub_field('lawfirm_anim_number_descr');
 <section class="ftco-consultation">
 	<div class="container-fluid">
 		<div class="row d-md-flex">
-			<div class="half d-flex justify-content-center align-items-center img" style="background-image: url(images/bg_1.jpg);">
+			<div class="half d-flex justify-content-center align-items-center img" style="background-image: url(<?php $lawfirm_picture = get_field('mainpage_fos_picture'); echo esc_url( $lawfirm_picture[url] ); ?>);">
 				<div class="overlay"></div>
 				<div class="desc text-center">
 					<div class="icon"><span class="flaticon-auction"></span></div>
-					<h1><a href="index.html">Whisper <br><span>Law Firm Website</span></a></h1>
+<?php if(get_field('mainpage_fos_descr') && get_field('mainpage_fos_name') && get_field('mainpage_fos_links')   ) :?>
+					<h1><a href="<?php the_field('mainpage_fos_links');?>"><?php the_field('mainpage_fos_name');?> <br><span><?php the_field('mainpage_fos_descr');?></span></a></h1>
+<?php endif; ?>
+
+
 				</div>
 			</div>
 			<div class="half p-3 p-md-5 ftco-animate">
-				<h3 class="mb-4">Free Consultation</h3>
-				<form action="#">
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Your Name">
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Your Email">
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Subject">
-					</div>
-					<div class="form-group">
-						<textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
-					</div>
-					<div class="form-group">
-						<input type="submit" value="Send message" class="btn btn-primary">
-					</div>
-				</form>
+
+<?php if(get_field('mainpage_fos_title')) :?>
+				<h3 class="mb-4"><?php the_field('mainpage_fos_title');?></h3>
+<?php endif; ?>
+<?
+ if(get_field('mainpage_fos')) :
+$shotcode_fos = get_field('mainpage_fos');
+ echo do_shortcode($shotcode_fos);
+ endif; ?>
+
+
+
+
+
+
 			</div>
 		</div>
 	</div>
