@@ -9113,6 +9113,10 @@ textarea.form-control {
     display: inline-block;
     margin-bottom: 4px;
     font-weight: 400; }
+
+    .category-block-27 ul li {
+margin-right: 3px;
+}
     .block-27 ul li a, .block-27 ul li span {
       color: gray;
       text-align: center;
@@ -9126,6 +9130,46 @@ textarea.form-control {
       background: #eac15a;
       color: #fff;
       border: 1px solid transparent; }
+.category-block-27 {
+display: -webkit-flex;
+display: -moz-flex;
+display: -ms-flex;
+display: -o-flex;
+display: flex;
+justify-content: center;
+}
+
+
+.wp-pagenavi_page span, .wp-pagenavi_page a {
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      border-radius: 50%;
+       color: gray;
+      border: 1px solid #cccccc;
+        padding: 0;
+        margin: 0 3px 0 0;
+        display: inline-block;
+        text-align: center;
+     /*    padding: 5px 0;
+        margin: 0 4px; */
+        font-size: 16px;
+/*         background: #14a7a2; */
+        text-decoration: none;
+      }
+.wp-pagenavi_page span {
+        background: #eac15a;
+        color: #fff;
+}
+
+
+
+
+
+
+
+
+
 
 .contact-section .contact-info p a {
   color: #1a1a1a; }
