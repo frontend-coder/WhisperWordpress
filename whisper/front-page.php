@@ -277,97 +277,70 @@ $shotcode_fos = get_field('mainpage_fos');
  echo do_shortcode($shotcode_fos);
  endif; ?>
 
-
-
-
-
-
 			</div>
 		</div>
 	</div>
 </section>
 
+
+
+
 <section class="ftco-section testimony-section bg-secondary">
 	<div class="container">
 		<div class="row justify-content-center mb-5 pb-3">
 			<div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-				<span class="subheading">Testimonial</span>
-				<h2 class="mb-4">Happy Clients</h2>
+		<?php if(get_field('happy_clients_descr')) :?>
+				<span class="subheading"><?php the_field('happy_clients_descr');?></span>
+<?php endif; ?>
+<?php if(get_field('happy_clients_title')) :?>
+				<h2 class="mb-4"><?php the_field('happy_clients_title');?></h2>
+<?php endif; ?>
 			</div>
 		</div>
 		<div class="row ftco-animate">
 			<div class="col-md-12">
 				<div class="carousel-testimony owl-carousel ftco-owl">
+
+		<?php
+			$posts = get_posts( array (
+				'post_type' => 'testimonial'
+//'numberposts' => 6
+			));
+			if($posts):
+// lawasf_debug($posts);
+				?>
+<?php foreach ($posts as $post ): ?>
 					<div class="item">
 						<div class="testimony-wrap text-center py-4 pb-5">
-							<div class="user-img mb-4" style="background-image: url(images/person_1.jpg)">
+							<div class="user-img mb-4" style="background-image: url(<?php $thumb_id = get_post_thumbnail_id();
+										$thumb_url = wp_get_attachment_image_src($thumb_id,'testimonials-thumb', false);
+										echo $thumb_url[0];   ?>)">
 								<span class="quote d-flex align-items-center justify-content-center">
 									<i class="icon-quote-left"></i>
 								</span>
 							</div>
 							<div class="text p-3">
-								<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-								<p class="name">Arthur Browner</p>
-								<span class="position">Client</span>
+								<p class="mb-4">
+								<?php
+$content = get_the_excerpt();// или get_the_content()
+$trimmed_content = wp_trim_words( $content, 19, '' );
+echo $trimmed_content;
+?>
+
+								</p>
+								<p class="name"><?= $post->post_title ?></p>
+<?php if(get_field('happy_clients_proffi')) :?>
+								<span class="position"><?= the_field('happy_clients_proffi') ?></span>
+<?php endif; ?>
 							</div>
 						</div>
 					</div>
-					<div class="item">
-						<div class="testimony-wrap text-center py-4 pb-5">
-							<div class="user-img mb-4" style="background-image: url(images/person_2.jpg)">
-								<span class="quote d-flex align-items-center justify-content-center">
-									<i class="icon-quote-left"></i>
-								</span>
-							</div>
-							<div class="text p-3">
-								<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-								<p class="name">Arthur Browner</p>
-								<span class="position">Client</span>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="testimony-wrap text-center py-4 pb-5">
-							<div class="user-img mb-4" style="background-image: url(images/person_3.jpg)">
-								<span class="quote d-flex align-items-center justify-content-center">
-									<i class="icon-quote-left"></i>
-								</span>
-							</div>
-							<div class="text p-3">
-								<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-								<p class="name">Arthur Browner</p>
-								<span class="position">Client</span>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="testimony-wrap text-center py-4 pb-5">
-							<div class="user-img mb-4" style="background-image: url(images/person_4.jpg)">
-								<span class="quote d-flex align-items-center justify-content-center">
-									<i class="icon-quote-left"></i>
-								</span>
-							</div>
-							<div class="text p-3">
-								<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-								<p class="name">Arthur Browner</p>
-								<span class="position">Client</span>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="testimony-wrap text-center py-4 pb-5">
-							<div class="user-img mb-4" style="background-image: url(images/person_3.jpg)">
-								<span class="quote d-flex align-items-center justify-content-center">
-									<i class="icon-quote-left"></i>
-								</span>
-							</div>
-							<div class="text p-3">
-								<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-								<p class="name">Arthur Browner</p>
-								<span class="position">Client</span>
-							</div>
-						</div>
-					</div>
+	<?php endforeach; //testimonials  ?>
+	<?php endif; //counseling
+		wp_reset_postdata();  ?>
+
+
+
 				</div>
 			</div>
 		</div>
@@ -378,68 +351,67 @@ $shotcode_fos = get_field('mainpage_fos');
 	<div class="container">
 		<div class="row justify-content-center mb-5 pb-3">
 			<div class="col-md-7 heading-section text-center ftco-animate">
-				<span class="subheading">Our Blog</span>
-				<h2>Recent Blog</h2>
+
+<?php if(get_field('blog_descr')) :?>
+				<span class="subheading"><?php the_field('blog_descr');?></span>
+<?php endif; ?>
+
+<?php if(get_field('blog_title')) :?>
+				<h2><?php the_field('blog_title');?></h2>
+<?php endif; ?>
+
 			</div>
 		</div>
 		<div class="row d-flex">
+			<?php
+			$posts = get_posts( array(
+				'numberposts' => 3,
+    //      'category'    => 'blog',
+				'orderby'     => 'date',
+				'order'       => 'DESC',
+				'post_type'   => 'post',
+  'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+) );
+
+			foreach( $posts as $post ):
+				setup_postdata($post);
+				?>
+
+
+
 			<div class="col-md-4 d-flex ftco-animate">
 				<div class="blog-entry justify-content-end">
-					<a href="blog-single.html" class="block-20" style="background-image: url('images/image_1.jpg');">
+					<a href="blog-single.html" class="block-20" style="background-image: url(<?php $thumb_id = get_post_thumbnail_id();
+										$thumb_url = wp_get_attachment_image_src($thumb_id,'mainblogpage-thamb', false);
+										echo $thumb_url[0];   ?>);">
 					</a>
 					<div class="text p-4 float-right d-block">
 						<div class="topper d-flex align-items-center">
 							<div class="one py-2 pl-3 pr-1 align-self-stretch">
-								<span class="day">15</span>
+								<span class="day"><?php the_time('j'); ?></span>
 							</div>
 							<div class="two pl-0 pr-3 py-2 align-self-stretch">
-								<span class="yr">2019</span>
-								<span class="mos">January</span>
+								<span class="yr"><?php the_time('Y'); ?></span>
+								<span class="mos"><?php the_time('F'); ?></span>
 							</div>
 						</div>
-						<h3 class="heading mt-2"><a href="#">All you want to know about industrial laws</a></h3>
-						<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+						<h3 class="heading mt-2"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+						<p><?php
+$content = get_the_excerpt();// или get_the_content()
+$trimmed_content = wp_trim_words( $content, 16, '' );
+echo $trimmed_content;
+?></p>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-4 d-flex ftco-animate">
-				<div class="blog-entry justify-content-end">
-					<a href="blog-single.html" class="block-20" style="background-image: url('images/image_2.jpg');">
-					</a>
-					<div class="text p-4 float-right d-block">
-						<div class="topper d-flex align-items-center">
-							<div class="one py-2 pl-3 pr-1 align-self-stretch">
-								<span class="day">12</span>
-							</div>
-							<div class="two pl-0 pr-3 py-2 align-self-stretch">
-								<span class="yr">2019</span>
-								<span class="mos">January</span>
-							</div>
-						</div>
-						<h3 class="heading mt-2"><a href="#">All you want to know about industrial laws</a></h3>
-						<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 d-flex ftco-animate">
-				<div class="blog-entry">
-					<a href="blog-single.html" class="block-20" style="background-image: url('images/image_3.jpg');">
-					</a>
-					<div class="text p-4 float-right d-block">
-						<div class="topper d-flex align-items-center">
-							<div class="one py-2 pl-3 pr-1 align-self-stretch">
-								<span class="day">10</span>
-							</div>
-							<div class="two pl-0 pr-3 py-2 align-self-stretch">
-								<span class="yr">2019</span>
-								<span class="mos">January</span>
-							</div>
-						</div>
-						<h3 class="heading mt-2"><a href="#">All you want to know about industrial laws</a></h3>
-						<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-					</div>
-				</div>
-			</div>
+
+<?php
+endforeach;
+wp_reset_postdata();
+?>
+
+
+
 		</div>
 	</div>
 </section>
