@@ -38,8 +38,8 @@ wp_enqueue_script( 'whisper-animateNumber', get_template_directory_uri() . '/ass
 wp_enqueue_script( 'whisper-bootstrapdatepickerjs', get_template_directory_uri() . '/assets/js/bootstrap-datepicker.js', array('jquery'), '', true );
 wp_enqueue_script( 'whisper-timepickerjs', get_template_directory_uri() . '/assets/js/jquery.timepicker.min.js', array('jquery'), '', true );
 wp_enqueue_script( 'whisper-scrollaxjs', get_template_directory_uri() . '/assets/js/scrollax.min.js', array('jquery'), '', true );
-wp_enqueue_script( 'whisper-googleapis', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false', array('jquery'), '', true );
-wp_enqueue_script( 'whisper-googlemapjs', get_template_directory_uri() . '/assets/js/google-map.js', array('jquery'), '', true );
+// wp_enqueue_script( 'whisper-googleapis', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false', array('jquery'), '', true );
+// wp_enqueue_script( 'whisper-googlemapjs', get_template_directory_uri() . '/assets/js/google-map.js', array('jquery'), '', true );
 wp_enqueue_script( 'whisper-mainjs', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), '', true );
 
 
