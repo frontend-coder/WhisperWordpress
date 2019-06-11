@@ -9,6 +9,10 @@ add_image_size ('practis-thambnail', 600, 300, true);
 add_image_size ('mainpage-thamb', 360, 256, true);
 add_image_size ('singlepage-thamb', 1920, 1000, true);
 add_image_size ('mainblogpage-thamb', 350, 270, true);
+
+add_image_size ('maingallery-thamb', 800, 533, true);
+
+
 }
 
 

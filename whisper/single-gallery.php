@@ -10,8 +10,8 @@ get_header();
         <div class="row no-gutters slider-text align-items-end justify-content-center">
           <div class="col-md-9 ftco-animate pb-5 text-center">
             <h1 class="mb-3 bread"><?php the_title(); ?></h1>
+<?php get_template_part('template-parts/content-breadcrumbs'); ?>
 
-          <?php get_template_part('template-parts/content-breadcrumbs'); ?>
 
           </div>
         </div>
@@ -25,7 +25,7 @@ get_header();
           <div class="col-lg-8 order-md-last ftco-animate">
 <?php if (have_posts()) : while(have_posts()) : the_post(); ?>
 <?php the_content(); ?>
-<?php echo kama_link_pages(); ?>
+
 <?php endwhile; // end while ?>
 <?php endif; // end if       ?>
 
@@ -36,16 +36,19 @@ get_header();
    <?php get_template_part('template-parts/content-legaladvisors'); ?>
 
 
+
           </div> <!-- .col-md-8 -->
           <div class="col-lg-4 sidebar ftco-animate">
+
 <?php get_sidebar(); ?>
+
           </div>
+
         </div>
       </div>
     </section> <!-- .section -->
 
-<?php get_template_part('template-parts/content-subcribe'); ?>
-
+    <?php get_template_part('template-parts/content-subcribe'); ?>
 <?php
 get_footer();
 ?>

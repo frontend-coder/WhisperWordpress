@@ -9161,10 +9161,34 @@ justify-content: center;
         background: #eac15a;
         color: #fff;
 }
-
-
-
-
+.widget_nav_menu ul {
+padding: 0;
+padding-left: 20px;
+}
+.widget_nav_menu ul li {
+  list-style: none;
+}
+.widget_nav_menu ul li a {
+position: relative;
+font-family: "Poppins", Arial, sans-serif;
+}
+.widget_nav_menu ul li a:before {
+  position: absolute;
+  left: -20px;
+  top: 4px;
+        content: "\f3d1";
+                display: inline-block;
+        font-family: "Ionicons";
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        text-rendering: auto;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
 
 
 

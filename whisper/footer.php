@@ -18,6 +18,16 @@
         <div class="row mb-5">
           <div class="col-md">
             <div class="ftco-footer-widget mb-4">
+
+<?php if ( !is_active_sidebar( 'widgeting-footer-1' ) )
+                    { echo "Активируйте виджеты"; }
+                    else {
+                      dynamic_sidebar( 'widgeting-footer-1' );
+                    }
+                     ?>
+
+
+              <!--
               <h2 class="ftco-heading-2">Whisper</h2>
               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
@@ -25,11 +35,23 @@
                 <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
                 <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
               </ul>
+ -->
+
+
             </div>
           </div>
           <div class="col-md">
             <div class="ftco-footer-widget mb-4 ml-md-5">
-              <h2 class="ftco-heading-2">Practice Areas</h2>
+
+<?php if ( !is_active_sidebar( 'widgeting-footer-2' ) )
+                    { echo "Активируйте виджеты"; }
+                    else {
+                      dynamic_sidebar( 'widgeting-footer-2' );
+                    }
+                     ?>
+
+
+            <!--   <h2 class="ftco-heading-2">Practice Areas</h2>
               <ul class="list-unstyled">
                 <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Family Law</a></li>
                 <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Business Law</a></li>
@@ -40,12 +62,19 @@
                 <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Employment Law</a></li>
                 <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Property Law</a></li>
 
-              </ul>
+              </ul> -->
             </div>
           </div>
           <div class="col-md">
              <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Business Hours</h2>
+<?php if ( !is_active_sidebar( 'widgeting-footer-3' ) )
+                    { echo "Активируйте виджеты"; }
+                    else {
+                      dynamic_sidebar( 'widgeting-footer-3' );
+                    }
+                     ?>
+
+          <!--     <h2 class="ftco-heading-2">Business Hours</h2>
               <div class="opening-hours">
               	<h4>Opening Days:</h4>
               	<p class="pl-3">
@@ -57,28 +86,43 @@
               		<span>All Sunday Days</span>
               		<span>All Official Holidays</span>
               	</p>
-              </div>
+              </div> -->
+
+
             </div>
           </div>
           <div class="col-md">
             <div class="ftco-footer-widget mb-4">
-            	<h2 class="ftco-heading-2">Have a Questions?</h2>
+<?php if ( !is_active_sidebar( 'widgeting-footer-4' ) )
+                    { echo "Активируйте виджеты"; }
+                    else {
+                      dynamic_sidebar( 'widgeting-footer-4' );
+                    }
+                     ?>
+
+          <!--   	<h2 class="ftco-heading-2">Have a Questions?</h2>
             	<div class="block-23 mb-3">
 	              <ul>
 	                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
 	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
 	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
 	              </ul>
-	            </div>
+	            </div> -->
+
+
+
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12 text-center">
 
+<?php if(get_field('footer_copyright', 'option')) :?>
             <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+ <?php the_field('footer_copyright', 'option');?>
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+  <?php endif; ?>
+
           </div>
         </div>
       </div>

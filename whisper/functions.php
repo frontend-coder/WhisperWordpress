@@ -105,17 +105,7 @@ add_action( 'after_setup_theme', 'whisper_content_width', 0 );
  */
 
 
-function whisper_widgets_init() {
-	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'whisper' ),
-		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'whisper' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
-}
+
 add_action( 'widgets_init', 'whisper_widgets_init' );
 
 require  get_template_directory() . '/functions/including-style.php';
@@ -123,6 +113,10 @@ require  get_template_directory() . '/functions/custom-thamb.php' ;
 require  get_template_directory() . '/functions/asf-options.php' ;
 require  get_template_directory() . '/functions/custom-type.php' ;
 require  get_template_directory() . '/functions/function-pagination.php' ;
+
+require  get_template_directory() . '/functions/including-widget.php' ;
+
+
 /**
  * Implement the Custom Header feature.
  */

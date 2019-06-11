@@ -1,6 +1,6 @@
 <?php
 /**
-Template Name: attorneys-page-tamplate
+Template Name: gallery-page-tamplate
 Template Post Type: post, page
 **/
 ?>
@@ -17,7 +17,7 @@ get_header();
       <div class="col-md-9 ftco-animate pb-5 text-center">
         <h1 class="mb-3 bread"><?php the_title(); ?></h1>
 
-       <?php get_template_part('template-parts/content-breadcrumbs'); ?>
+     <?php get_template_part('template-parts/content-breadcrumbs'); ?>
 
       </div>
     </div>
@@ -27,7 +27,7 @@ get_header();
 
 <section class="ftco-section bg-light">
  <div class="container-fluid">
- <!--  <div class="row justify-content-center mb-5 pb-3">
+<!--   <div class="row justify-content-center mb-5 pb-3">
     <div class="col-md-7 text-center heading-section ftco-animate">
      <span class="subheading">Our Attorney</span>
      <h2 class="mb-4">Our Legal Attorneys</h2>
@@ -39,7 +39,7 @@ get_header();
   $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
   $args = array(
-    'post_type'=>'attorneys', // Your post type name
+    'post_type'=>'gallery', // Your post type name
     'posts_per_page' => 8,
     'paged' => $paged,
   );

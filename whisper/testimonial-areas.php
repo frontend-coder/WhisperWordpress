@@ -16,13 +16,12 @@ get_header();
           <div class="col-md-9 ftco-animate pb-5 text-center">
             <h1 class="mb-3 bread"><?php the_title(); ?></h1>
 
-            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Practice Areas <i class="ion-ios-arrow-forward"></i></span></p>
+            <?php get_template_part('template-parts/content-breadcrumbs'); ?>
 
           </div>
         </div>
       </div>
     </section>
-
 
     <section class="ftco-section bg-light">
     	<div class="container">
@@ -86,8 +85,7 @@ if ($total_pages > 1){
   ));
 }
 }
-wp_reset_postdata();
-?>
+wp_reset_postdata(); ?>
 
             </div>
           </div>
@@ -96,11 +94,8 @@ wp_reset_postdata();
     	</div>
     </section>
 
-
   <?php get_template_part('template-parts/content-subcribe'); ?>
-
 
 <?php
 get_footer();
 ?>
-
