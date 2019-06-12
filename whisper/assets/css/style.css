@@ -102,6 +102,54 @@ ol ul,
 ul ol {
   margin-bottom: 0; }
 
+
+.commentlist {
+  list-style: none;
+}
+.commentlist li {
+  margin-bottom: 20px;
+}
+.comment-author img {
+  border-radius: 50%;
+}
+
+.comment-box {
+display: -webkit-flex;
+display: -moz-flex;
+display: -ms-flex;
+display: -o-flex;
+display: flex;
+}
+.comment-contents {
+margin-left: 20px;
+}
+.comment-contents .fn {
+line-height: 1.5;
+color: #000c;
+font-weight: 400;
+font-family: "Lora", serif;
+font-size: 20px;
+}
+.comment-meta span {
+        text-transform: uppercase;
+        font-size: 13px;
+        letter-spacing: .1em;
+        color: #ccc;
+}
+.comment-contents .reply a {
+        padding: 5px 10px;
+        background: #e6e6e6;
+        color: #000;
+        text-transform: uppercase;
+        font-size: 11px;
+        letter-spacing: .1em;
+        font-weight: 400;
+        border-radius: 4px;}
+.comment-contents .reply a:hover {
+color: #e6e6e6;
+background: #000;
+}
+
 dt {
   font-weight: 700; }
 

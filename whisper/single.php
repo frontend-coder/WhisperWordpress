@@ -37,12 +37,20 @@ get_header();
             <p><a href="<?php the_field('practice_areas_link');?>" class="btn btn-primary"><?php the_field('practice_areas_ancoring');?></a></p>
 <?php endif; ?>
 
-  <?php get_template_part('template-parts/content-legaladvisors'); ?>
+  <?php // get_template_part('template-parts/content-legaladvisors'); ?>
+
+<?php // get_template_part('template-parts/content-comments'); ?>
 
 
+<?php
+if ( comments_open( get_the_ID()  )) {
+  comments_template('', true );
+}
+?>
 
           </div> <!-- .col-md-8 -->
           <div class="col-lg-4 sidebar ftco-animate">
+
 <?php get_sidebar(); ?>
           </div>
         </div>
