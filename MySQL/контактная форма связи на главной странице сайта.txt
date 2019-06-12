@@ -1,3 +1,7 @@
+[contact-form-7 id="134" title="контактная форма связи на главной странице сайта"]
+
+
+
 <div><div class="form-group">[text* text-120 class:form-control placeholder "Your Name"]</div><div class="form-group">[email* email-220 class:form-control placeholder "Your Email"]</div><div class="form-group">[text* text-320 class:form-control placeholder "Subject"]</div><div class="form-group">[textarea textarea-420 class:form-control placeholder "Message"]</div><div class="form-group">[submit class:btn class:btn-primary "Send Message"]</div></div>
 
 
