@@ -8270,7 +8270,7 @@ h1, h2, h3, h4, h5,
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: 14px; }
-
+.slider-text .kama_breadcrumbs,
 .slider-text .breadcrumbs {
   font-size: 16px;
   font-weight: 400;
@@ -8278,6 +8278,8 @@ h1, h2, h3, h4, h5,
   z-index: 99;
   font-family: "Lora", serif;
   font-style: italic; }
+
+ /*  .slider-text .kama_breadcrumbs span,
   .slider-text .breadcrumbs span {
     color: rgba(255, 255, 255, 0.5); }
     .slider-text .breadcrumbs span i {
@@ -8286,8 +8288,25 @@ h1, h2, h3, h4, h5,
       color: rgba(255, 255, 255, 0.7); }
       .slider-text .breadcrumbs span a:hover, .slider-text .breadcrumbs span a:focus {
         color: #eac15a; }
+        .slider-text .breadcrumbs .span i,
+        .slider-text .breadcrumbs span a:hover .kb_sep i,
         .slider-text .breadcrumbs span a:hover i, .slider-text .breadcrumbs span a:focus i {
-          color: #eac15a; }
+          color: #eac15a; } */
+
+
+.slider-text .kama_breadcrumbs span a span {
+  color: rgba(255, 255, 255, 0.5);}
+.slider-text .kama_breadcrumbs span span {
+  color: rgba(255, 255, 255, 0.3);}
+
+  .slider-text .kama_breadcrumbs span:focus + .kb_sep i,
+
+.slider-text .kama_breadcrumbs span a:focus span,
+.slider-text .kama_breadcrumbs span a:hover span {
+color: #eac15a;
+
+}
+
 
 .slider-text .bread {
   font-weight: 700 !important; }

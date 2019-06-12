@@ -8,8 +8,10 @@
  */
 
 ?>
-<p class="breadcrumbs">
+<!-- <p class="breadcrumbs">
               <span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span>
               <span class="mr-2"><a href="blog.html">Blog <i class="ion-ios-arrow-forward"></i></a></span>
               <span>Practice Areas Single <i class="ion-ios-arrow-forward"></i></span>
-            </p>
+            </p> -->
+
+<?php if( function_exists('kama_breadcrumbs') ) kama_breadcrumbs(' > '); ?>

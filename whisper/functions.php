@@ -116,6 +116,7 @@ require  get_template_directory() . '/functions/function-pagination.php' ;
 
 require  get_template_directory() . '/functions/including-widget.php' ;
 
+require  get_template_directory() . '/functions/function-breadcrumbs.php' ;
 
 /**
  * Implement the Custom Header feature.

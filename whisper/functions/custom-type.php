@@ -39,9 +39,10 @@ function register_post_types(){
 		'editor',
 		'thumbnail',
 		'excerpt' ), // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
-		'taxonomies'          => array(),
+		'taxonomies'          => array('skills'),
 	//	'taxonomies'          => array('category','post_tag'),
 		'has_archive'         => false,
+		'rewrite'             => true,
 		// 'rewrite'             => array(
 		// 	'slug'=>'deal-practis',
 		// 	'hierarchical'=>false,
@@ -51,6 +52,78 @@ function register_post_types(){
 		'query_var'           => true,
 	) );
 }
+
+
+
+// хук для регистрации таксономии
+add_action('init', 'create_taxonomy', 0);
+function create_taxonomy(){
+	// список параметров: http://wp-kama.ru/function/get_taxonomy_labels
+	register_taxonomy('skills', array('practice'), array(
+	'hierarchical' => true,
+	//	'label'                 => '', // определяется параметром $labels->name
+		'labels'                => array(
+			'name'              => 'Навыки',
+			'singular_name'     => 'Навык',
+			'search_items'      => 'Найти таксономию Навыки',
+			'all_items'         => 'Все таксономии Навыки',
+
+			'parent_item' => null,
+				'parent_item_colon' => null,
+			'edit_item'         => 'Редактировать таксономии Навыки',
+			'update_item'       => 'Обновить',
+			'add_new_item'      => 'Добавить новую таксономию',
+			'new_item_name'     => 'Новое имя таксономии',
+			'menu_name'         => 'Навыки',
+		),
+		'description'           => 'Навыки, используемые в работе', // описание таксономии
+		'public'                => true,
+		'publicly_queryable'    => true, // равен аргументу public
+	'hierarchical'          => false,
+	'rewrite'               => true,
+	'show_ui'       => true,
+	'show_tagcloud' => false,
+		'query_var'     => true,
+		'meta_box_cb' => 'post_categories_meta_box',
+	) );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // регистрация дргугого типа записи - attorneys
 add_action('init', 'register_post_types2');

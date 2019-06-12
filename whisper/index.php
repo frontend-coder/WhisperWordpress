@@ -1,59 +1,96 @@
 <?php
-/**
- * The main template file
- *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package Whisper
- */
-
 get_header();
 ?>
+<?php // get the current taxonomy term
+$term = get_queried_object();
+// vars
+$image = get_field('page_blog_fon', $term);
+?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+    <section class="hero-wrap hero-wrap-2" style="background-image: url(<?php echo $image['url']; ?>);" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-center">
+          <div class="col-md-9 ftco-animate pb-5 text-center">
+            <h1 class="mb-3 bread"><?php
+                  if( is_category() )
+                    echo get_queried_object()->name;
+                  ?></h1>
+           <?php get_template_part('template-parts/content-breadcrumbs'); ?>
+          </div>
+        </div>
+      </div>
+    </section>
 
-		<?php
-		if ( have_posts() ) :
 
-			if ( is_home() && ! is_front_page() ) :
-				?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
-				<?php
-			endif;
+    <section class="ftco-section bg-light">
+      <div class="container">
+   <!--      <div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+          	<span class="subheading">Our Blog</span>
+            <h2>Recent Blog</h2>
+          </div>
+        </div> -->
+        <div class="row d-flex">
+  <?php if (have_posts()) : while(have_posts()) : the_post(); ?>
+          <div class="col-md-4 d-flex ftco-animate">
+          	<div class="blog-entry justify-content-end">
+              <a href="blog-single.html" class="block-20" style="background-image: url(<?php $thumb_id = get_post_thumbnail_id();
+                    $thumb_url = wp_get_attachment_image_src($thumb_id,'singlepage-thamb', false);
+                    echo $thumb_url[0];   ?>);">
+              </a>
+              <div class="text p-4 float-right d-block">
+              	<div class="topper d-flex align-items-center">
+              		<div class="one py-2 pl-3 pr-1 align-self-stretch">
+              			<span class="day"><?php the_time('j'); ?></span>
+              		</div>
+              		<div class="two pl-0 pr-3 py-2 align-self-stretch">
+              			<span class="yr"><?php the_time('Y'); ?></span>
+              			<span class="mos"><?php the_time('F'); ?></span>
+              		</div>
+              	</div>
+                <h3 class="heading mt-2"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                <p><?php
+$content = get_the_excerpt();// или get_the_content()
+$trimmed_content = wp_trim_words( $content, 16, '' );
+echo $trimmed_content;
+?></p>
+              </div>
+            </div>
+          </div>
 
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
+<?php endwhile; // end while ?>
 
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_type() );
 
-			endwhile;
 
-			the_posts_navigation();
+        </div>
+        <div class="row mt-5">
+          <div class="col text-center">
+            <div class="block-27 category-block-27">
+              <?php pagination(); // пагинация, функция нах-ся в function.php ?>
+            <!--   <ul>
+                <li><a href="#">&lt;</a></li>
+                <li class="active"><span>1</span></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&gt;</a></li>
+              </ul> -->
+            </div>
+          </div>
+        </div>
+        <?php else: // иначе вывести то что после оператора вставишь
+?>
 
-		else :
 
-			get_template_part( 'template-parts/content', 'none' );
+<?php endif; // end if
+?>
+      </div>
+    </section>
 
-		endif;
-		?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
+ <?php get_template_part('template-parts/content-subcribe'); ?>
 
 <?php
-get_sidebar();
 get_footer();
+?>
